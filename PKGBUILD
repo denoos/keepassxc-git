@@ -16,14 +16,14 @@ arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassxc"
 license=('GPL2')
 depends=('libxtst' 'shared-mime-info' 'qt5-x11extras' 'hicolor-icon-theme' 
-         'desktop-file-utils' 'yubikey-personalization')
+         'desktop-file-utils')
 install=keepassxc.install
 makedepends=('git' 'intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
 conflicts=('keepassx-svn' 'keepassx' 'keepassx-git' 'keepassx2-git' 'keepassx2' 'keepassx2-yubikey-git' 'keepassx-http' 'keepassxc')
 provides=("keepassx"{,2}"=${pkgver}" "keepassx-svn=${pkgver}" "keepassx2-git=${pkgver}")
 replaces=('keepassx-http' 'keepassx-reboot-git')
 options=(!emptydirs)
-source=(git+https://github.com/keepassxreboot/keepassxc.git#branch=develop)
+source=(git+https://github.com/denoos/keepassxc.git#branch=develop)
 md5sums=('SKIP')
 
 pkgver() {
@@ -43,10 +43,10 @@ build() {
         -DCMAKE_INSTALL_BINDIR=/usr/bin \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_VERBOSE_MAKEFILE=OFF \
-        -DWITH_GUI_TESTS=ON \
+        -DWITH_GUI_TESTS=OFF \
         -DWITH_XC_AUTOTYPE=ON \
-        -DWITH_XC_HTTP=ON \
-        -DWITH_XC_YUBIKEY=ON \
+        -DWITH_XC_HTTP=OFF \
+        -DWITH_XC_YUBIKEY=OFF \
         -DCMAKE_BUILD_TYPE=Release ..
     make
 }
