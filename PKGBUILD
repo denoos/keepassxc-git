@@ -51,10 +51,10 @@ build() {
     make
 }
 
-#check() {
-#    cd "${_gitname}/build"
-#    make test
-#}
+check() {
+    cd "${_gitname}/build"
+    make test
+}
 
 package() {
     cd "${_gitname}/build"
